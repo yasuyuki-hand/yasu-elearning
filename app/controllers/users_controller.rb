@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :only_loggedin_users, only: [:index, :edit, :update, :destroy, :following, :followers]
 
+  def index
+    @users = User.paginate(page: params[:page], per_page: 10)
+  end
+
   def new
     @user = User.new
   end
