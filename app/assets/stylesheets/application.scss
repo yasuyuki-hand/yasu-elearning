@@ -20,33 +20,33 @@
  $favorite-color: rgb(236, 236, 236);
 
 body {
-    /* background-color: $favorite-color; */
-    font-family: 'VT323', monospace;
+  /* background-color: $favorite-color; */
+  font-family: 'VT323', monospace;
 }
 
 .form-view {
-    background-image: url(/assets/form.jpg);
-    background-size: 100%;
-    background-position: center;
-    color: white;
+  background-image: url(/assets/form.jpg);
+  background-size: 100%;
+  background-position: center;
+  color: white;
 }
 
 .main {
-    // background-image: url(/assets/view.jpg);
-    // background-size: 100%;
-    // width: auto;
-    // height: 400px;
+  // background-image: url(/assets/view.jpg);
+  // background-size: 100%;
+  // width: auto;
+  // height: 400px;
 }
 
 .about {
-    border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-    width:  150px;       /* ※縦横を同値に */
-    height: 150px;       /* ※縦横を同値に */
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width:  150px;       /* ※縦横を同値に */
+  height: 150px;       /* ※縦横を同値に */
 }
 
 .users {
-    list-style: none;
-    margin: 0;
+  list-style: none;
+  margin: 0;
     li {
       overflow: auto;
       padding: 10px 0;
