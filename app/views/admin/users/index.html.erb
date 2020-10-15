@@ -1,0 +1,27 @@
+<% provide(:title, "Manage Categories") %>
+<div class="container">
+<div class="panel">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-6">
+                <span><strong>Admin | Categories</strong></span>
+            </div>
+
+            <div class="col-sm-6 text-right">
+                <a class="btn btn-success" href="<%= admin_users_new_path %>">ADD CATEGORY</a>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Words</th>
+                <th>Action</th>
+            </tr>
+    
+        <%# <% @users.each do |user| %> 
+        </tbody>
+    </table>
+</div>

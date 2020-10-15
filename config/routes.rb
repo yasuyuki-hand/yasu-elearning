@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'users/new'
+    get 'users/edit'
+    get 'users/show'
+    get 'users/index'
+  end
   # get 'sessions/new'
   # get 'sessions/create'
   # get 'sessions/destroy'
@@ -18,18 +24,21 @@ Rails.application.routes.draw do
   #Create  -> Post button
   #Destroy -> Delete button to delete post
   # Update is not here beacuse in 
-  resources :microposts, only: [:create, :destroy]
-  resources :microposts do
-    member do
-      post 'uplike'
-    end
-  end
+  # resources :microposts, only: [:create, :destroy]
+  # resources :microposts do
+  #   member do
+  #     post 'uplike'
+  #   end
+  # end
   #For follow and unfollow
   resources :relationships, only: [:create, :destroy]
 
   #/login
   get '/login', to: 'sessions#new'
   delete '/logout', to: 'sessions#destroy'
+  namespace :admin do
+    resources :users
+  end
 
 
   #Follow Stats
