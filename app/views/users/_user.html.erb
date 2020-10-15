@@ -2,5 +2,9 @@
     <%= link_to gravatar_for(user), user %>
     <span class="user">
         <%= link_to user.name, user %>
+        <%= link_to "| delete", user_path(user), method: :delete,
+                                      data: { confirm: "You sure?" } %>  
     </span>
 </li>
+
+

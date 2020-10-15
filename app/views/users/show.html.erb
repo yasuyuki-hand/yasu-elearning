@@ -12,11 +12,4 @@
         </section>
     </div>
 </div>
-<div>
-    <div class="col-9">
-      <div class="microposts">
-        <%= render 'follow_form' if logged_in? %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'follow_form' if logged_in? %>
