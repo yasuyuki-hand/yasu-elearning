@@ -8,6 +8,11 @@
         <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <% if logged_in? %>
+                    <% if current_user.admin? %>
+                        <li class="nav-item">
+                            <%= link_to "Manage Categories", admin_users_index_path, class: "nav-link text-white"%>
+                        </li>
+                    <% end %>
                     <li class="nav-item">
                         <%= link_to "Members", users_path, class: "nav-link text-white"%>
                     </li>
