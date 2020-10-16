@@ -10,7 +10,7 @@
                 <% if logged_in? %>
                     <% if current_user.admin? %>
                         <li class="nav-item">
-                            <%= link_to "Manage Categories", admin_users_index_path, class: "nav-link text-white"%>
+                            <%= link_to "Manage Categories", admin_categories_path, class: "nav-link text-white"%>
                         </li>
                     <% end %>
                     <li class="nav-item">

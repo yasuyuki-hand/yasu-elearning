@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="container container-small">
+	    <div class="panel">
+		    <div class="panel-heading">
+			    <div class="row">
+				    <div class="col-sm-6">
+					    <span><strong>Admin | Categories</strong></span>
+				    </div>
+                    <div class="col-sm-6 text-right">
+                        <a href="<%= admin_categories_path %>">BACK</a>
+                    </div>
+                </div>
+            </div>
+            <%= render partial: 'form', locals: { category: @category } %>			    
+	    </div>
+    </div>
+</div>
+

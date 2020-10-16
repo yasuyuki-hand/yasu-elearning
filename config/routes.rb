@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'users/new'
-    get 'users/edit'
-    get 'users/show'
-    get 'users/index'
-  end
+  # namespace :admin do
+  #   get 'categories/new'
+  #   get 'categories/edit'
+  #   get 'categories/show'
+  #   get 'categories/index'
+  # end
+  # namespace :admin do
+  #   get 'users/new'
+  #   get 'users/edit'
+  #   get 'users/show'
+  #   get 'users/index'
+  # end
   # get 'sessions/new'
   # get 'sessions/create'
   # get 'sessions/destroy'
@@ -37,8 +43,12 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   delete '/logout', to: 'sessions#destroy'
   namespace :admin do
-    resources :users
+    resources :categories
   end
+
+  
+
+
 
 
   #Follow Stats
