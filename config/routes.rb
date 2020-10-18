@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   #New create and destroy for sessions
   resources :sessions, only: [:new, :create, :destroy]
+  resources :categories
 
   #Create and destroy for Micropost
   #Create  -> Post button
