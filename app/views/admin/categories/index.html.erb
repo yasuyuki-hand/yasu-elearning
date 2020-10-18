@@ -1,0 +1,37 @@
+<% provide(:title, "Manage Categories") %>
+<div class="container">
+<div class="panel">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-6">
+                <span><strong>Admin | Categories</strong></span>
+            </div>
+
+            <div class="col-sm-6 text-right">
+                <a class="btn btn-success" href="<%= new_admin_category_path %>">ADD CATEGORY</a>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="text-left">Title</th>
+                <th class="text-left">Description</th>
+                <th class="text-right">Words</th>
+                <th class="text-right">Action</th>
+            </tr>
+            <% @categories.each do |category| %>
+            <tr>    
+                <td class="text-left"><%= category.title %></td>
+                <td class="text-left"><%= category.description %></td>
+                <td class="text-right"></td>
+                <td class="text-right">
+                    <a class="btn btn-warning px-1" href="<%= edit_admin_category_path(category) %>">Edit</a><br>
+                    <%= link_to "Delete", admin_category_path(category), method: :delete,
+                                      data: { confirm: "You sure?" } %>      
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

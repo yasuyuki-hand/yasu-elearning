@@ -1,0 +1,25 @@
+<div class="row justify-content-center mt-3">
+    <div class="col-md-9 col-center">
+    <%= form_with model: [:admin, @category], local: true do |f| %>
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <%= f.label :title %>
+            </div>
+            <div class="col-sm-10">
+                <%= f.text_field :title, class: "form-control" %>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <%= f.label :description %>
+            </div>
+            <div class="col-sm-10">
+                <%= f.text_area :description, class: "form-control" %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= f.submit "Save Category", class: "btn btn-block btn-success py-3" %>
+        </div>
+    <% end %>
+    </div>			
+</div>

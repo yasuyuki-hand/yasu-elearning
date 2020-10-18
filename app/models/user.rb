@@ -20,6 +20,8 @@ class User < ApplicationRecord
   has_secure_password # password and password confirmation is required
   validates :password, length: { minimum: 5 }
 
+  # has_many :categories
+
   def following?(other_user)
     active_relationships.find_by(followed_id: other_user.id)
   end
