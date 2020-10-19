@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="container container-small">
+	    <div class="panel">
+		    <div class="panel-heading">
+			    <div class="row">
+				    <div class="col-sm-6">
+					    <span><strong>Admin Word Show Page</strong></span>
+				    </div>
+				    <div class="col-sm-6 text-right">
+					    <a class="btn btn-success py-2" href="">ADD WORD</a>
+					    <a href="<%= admin_categories_path %>">BACK</a>
+				    </div>
+			    </div>
+		    </div>
+		    <table class="table">
+			    <tbody>
+				    <tr>
+                        <th>Word</th>
+                        <th>Answer</th>
+                        <th>Action</th>
+				    </tr>
+                    <% @words.each do |word| %>
+                    <tr>
+                        <th><%= word.word %></th>
+                        <th><%= word.answer %></th>
+                        <th><a class="btn btn-warning px-1" href="<%= edit_admin_categories_word_path(word) %>">Edit</a>
+                            <%= link_to "Delete", admin_categories_words_path(word), method: :delete,
+                                      data: { confirm: "You sure?" } %>     
+                        </th>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

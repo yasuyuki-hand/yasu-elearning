@@ -22,7 +22,7 @@
             </tr>
             <% @categories.each do |category| %>
             <tr>    
-                <td class="text-left"><%= category.title %></td>
+                <td class="text-left"><%= link_to category.title, admin_categories_words_path(category) %></td>
                 <td class="text-left"><%= category.description %></td>
                 <td class="text-right"></td>
                 <td class="text-right">
