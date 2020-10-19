@@ -33,3 +33,10 @@ end
   following.each { |followed| user.follow(followed) }
   followers.each { |follower| follower.follow(user) }
 
+
+Word.create!(word: "subject",
+  answer: "math")
+  
+
+
+
