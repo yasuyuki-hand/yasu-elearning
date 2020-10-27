@@ -16,18 +16,21 @@ class Admin::WordsController < ApplicationController
     3.times {
       @word.choices.build
     }
+
   end
 
   def edit
   end
 
   def create
-    @category = Category.find_by_id(params[:category_id])
+    @category = Category.find(params[:category_id])
     @word = @category.words.build(word_params)
     if @word.save
-      redirect_to new_admin_category_word_url(@category), notice: "Successfully saved"
+      flash[:success] = "Word created!"
+      redirect_to new_admin_category_word_url(@category)
     else 
-      render 'new'
+      flash[:danger] = "Something failed."
+      redirect_to new_admin_category_word_url(@category)
     end
   end
 

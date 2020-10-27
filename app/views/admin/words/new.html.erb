@@ -6,16 +6,16 @@
                     <div class="col-sm-6">
                         <span><strong>Create Word Page</strong></span>
                     </div>
-
                     <div class="col-sm-6 text-right">
                     </div>
                 </div>
 		    </div>
-		<div class="panel-body">
-			<div class="row">
+		<div class="panel-body mt-4">
+			<div class="row justify-content-center">
 				<div class="col-md-8 col-center">
-                    <%= form_with model: [:admin, :category, @word], local: true do |f| %>
-						<div class="form-group row">
+                    <%= form_for [:admin, @category, @word] do |f| %>
+                    <%= render 'layouts/error_messages', model: f.object %>
+						<div class="form-group row mb-4">
                             <div class="col-sm-2">
                                 <%= f.label :word %>
                             </div>

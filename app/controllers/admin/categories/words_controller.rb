@@ -22,6 +22,7 @@ class Admin::Categories::WordsController < ApplicationController
     #   end
     # end 
     @word = Word.new(word_params)
+    abort
     if @word.save
       redirect_to new_admin_categories_word_url(@word), notice: "Successfully saved"
     else
