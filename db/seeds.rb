@@ -34,8 +34,8 @@ end
   followers.each { |follower| follower.follow(user) }
 
 
-Word.create!(word: "subject",
-  answer: "math")
+#Word.create!(word: "subject",
+  #answer: "math")
   
 
 

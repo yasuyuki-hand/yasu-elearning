@@ -1,0 +1,39 @@
+<%= form_with model: [:admin, :category, :word, @choice], local: true do |f| %>
+    <div class="form-group row">
+        <div class="col-sm-3">
+            <%= f.label :choices %>
+        </div>
+        
+        <div class="col-sm-9">
+            <%= f.text_field :choices, class: "form-control" %>
+            <div class="field">
+                <%= f.check_box :checkbox,:as => :boolean %>
+                <%= f.label :correct %>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <%= f.label :choices %>
+        </div>
+        
+        <div class="col-sm-9">
+            <%= f.text_field :choices, class: "form-control" %>
+            <div class="field">
+                <%= f.check_box :checkbox,:as => :boolean %>
+                <%= f.label :correct %>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <%= f.label :choices %>
+        </div>
+            
+        <div class="col-sm-9">
+            <%= f.text_field :choices, class: "form-control" %>
+            <div class="field">
+                <%= f.check_box :checkbox,:as => :boolean %>
+                <%= f.label :correct %>
+            </div>
+        </div>
+    </div>
+<% end %>

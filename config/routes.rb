@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
+  # namespace :admin do
+  #   get 'words/index'
+  #   get 'words/show'
+  #   get 'words/new'
+  #   get 'words/edit'
+  # end
   namespace :admin do
-    namespace :categories do
-      resources :words
+    resources :categories do
+      resources :words do
+        resources :choices, only: [:create, :destroy]
+      end
     end
   end
+  
   # get 'words/index'
   # get 'words/show'
   # get 'words/new'
