@@ -1,2 +1,51 @@
-<h1>Admin::Words#edit</h1>
-<p>Find me in app/views/admin/words/edit.html.erb</p>
+<div class="container">
+    <div class="container container-small">
+        <div class="panel">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <span><strong>Create Word Page</strong></span>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                    </div>
+                </div>
+		    </div>
+		<div class="panel-body mt-4">
+			<div class="row justify-content-center">
+				<div class="col-md-8 col-center">
+                    <%= form_for [:admin, @category, @word] do |f| %>
+                    <%= render 'layouts/error_messages', model: f.object %>
+						<div class="form-group row mb-4">
+                            <div class="col-sm-2">
+                                <%= f.label :word %>
+                            </div>
+                            
+                            <div class="col-sm-10">
+                                <%= f.text_field :word, class: "form-control" %>
+                            </div>
+						</div>
+                        <%= f.fields_for :choices do |i| %>
+                            <div class="form-group row">
+                                <div class="col-sm-3">
+                                    <%= i.label :choices %>
+                                </div>
+                                
+                                <div class="col-sm-9">
+                                    <%= i.text_field :choices, class: "form-control" %>
+                                    <div class="field">
+                                        <%= i.check_box :correct_ans %>
+                                        <%= i.label :correct %>
+                                    </div>
+                                </div>
+                            </div>
+                        <% end %>
+						<div class="form-group">
+							<%= f.submit "Create Word", class: "btn btn-block btn-success py-3" %>
+						</div>
+                    <% end %>			
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+
