@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :categories do
       resources :words do
-        resources :choices, only: [:create, :destroy]
+        resources :choices, only: [:create, :destroy, :edit, :update]
       end
     end
   end
