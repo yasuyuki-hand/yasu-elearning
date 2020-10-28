@@ -1,6 +1,6 @@
 class Admin::WordsController < ApplicationController
   def index
-    @category = Category.find(params[:id])
+    @category = Category.find(params[:category_id])
     @words = @category.words.all
   end
 
@@ -22,9 +22,9 @@ class Admin::WordsController < ApplicationController
   def edit
     @category = Category.find(params[:category_id])
     @word = Word.find(params[:id])
-    3.times {
-      Choice.find(params[:id])
-    }
+    # 3.times {
+    #   Choice.find(params[:id])
+    # }
   end
 
   def update
@@ -53,6 +53,12 @@ class Admin::WordsController < ApplicationController
       flash[:danger] = "Something failed."
       redirect_to new_admin_category_word_url(@category)
     end
+  end
+
+  def destroy
+    #@category = Category.find(params[:category_id])
+    Word.find(params[:id]).destroy
+    redirect_to admin_category_words_url, notice: "Successfully all delete!"
   end
 
   private

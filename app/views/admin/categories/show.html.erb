@@ -23,12 +23,12 @@
                     <tr>
                         <th><%= word.word %></th>
                         <% word.choices.each do |choice|%>
-                        <% if choice.correct_ans == true %>
-                        <th><%= choice.choices %></th>
-                        <% end %>
+                            <% if choice.correct_ans == true %>
+                                <th><%= choice.choices %></th>
+                            <% end %>
                         <% end %>
                         <th><a class="btn btn-warning px-1" href="<%= edit_admin_category_word_path(@category,word) %>">Edit</a>
-                            <%= link_to "Delete", admin_category_word_path(word), method: :delete,
+                            <%= link_to "Delete", admin_category_word_path(@category,word), method: :delete,
                                       data: { confirm: "You sure?" } %>     
                         </th>
                     </tr>
