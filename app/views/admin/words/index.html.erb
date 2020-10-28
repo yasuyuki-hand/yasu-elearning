@@ -22,10 +22,15 @@
                     <% @words.each do |word| %>
                     <tr>
                         <th><%= word.word %></th>
-                     
-                        <th><%= word.choices%></th>
-                        <th><a class="btn btn-warning px-1" href="<%= edit_admin_categories_word_path(word) %>">Edit</a>
-                            <%= link_to "Delete", admin_categories_words_path(word), method: :delete,
+                        <th>
+                            <% word.choices.each do |choice| %>
+                                <% if choice.correct_ans? %>
+                                    <%= choice.choices %>
+                                <% end %>
+                            <% end %>
+                        </th>
+                        <th><a class="btn btn-warning px-1" href="<%= edit_admin_category_word_path(@category,word) %>">Edit</a>
+                            <%= link_to "Delete", admin_category_word_path(@category,word), method: :delete,
                                       data: { confirm: "You sure?" } %>     
                         </th>
                     </tr>

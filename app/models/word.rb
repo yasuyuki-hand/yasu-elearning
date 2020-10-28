@@ -3,7 +3,7 @@ class Word < ApplicationRecord
     validates :word, presence: true, length: { minimum: 2 }
     # validates :choice, presence: true
     default_scope -> { order('created_at DESC') }
-    has_many :choices
+    has_many :choices, dependent: :destroy
     accepts_nested_attributes_for :choices
     validate :unique
     validate :must_have_one_item
