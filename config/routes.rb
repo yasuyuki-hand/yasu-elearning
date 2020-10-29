@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   # get 'user/new' -> /singup or /register
   resources :users
   root 'static_pages#home'
-
   #HTTP ACTION '/route-name', to: 'controller_name#action'
   get '/about', to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
@@ -46,6 +45,10 @@ Rails.application.routes.draw do
   #New create and destroy for sessions
   resources :sessions, only: [:new, :create, :destroy]
   resources :categories
+
+  resources :lessons do
+       resources :words
+  end
 
   #Create and destroy for Micropost
   #Create  -> Post button

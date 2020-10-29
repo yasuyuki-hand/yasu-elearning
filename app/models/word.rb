@@ -7,6 +7,7 @@ class Word < ApplicationRecord
     accepts_nested_attributes_for :choices
     validate :unique
     validate :must_have_one_item
+    # belongs_to :lesson
 
     def unique
         # 2つ以上同じchoiceにした場合にエラ

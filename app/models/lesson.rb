@@ -1,3 +1,4 @@
 class Lesson < ApplicationRecord
-    has_many :categories
+    belongs_to :category
+    # has_many :word
 end

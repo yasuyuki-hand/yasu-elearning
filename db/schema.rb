@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_122240) do
+ActiveRecord::Schema.define(version: 2020_10_28_092523) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -28,11 +28,22 @@ ActiveRecord::Schema.define(version: 2020_10_20_122240) do
     t.index ["word_id"], name: "index_choices_on_word_id"
   end
 
+  create_table "lesson_words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "lesson_word"
+    t.bigint "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_lesson_words_on_lesson_id"
+  end
+
   create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "category_id"
     t.integer "user_id"
+    t.string "lesson"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id", "created_at"], name: "index_lessons_on_category_id_and_created_at"
+    t.index ["user_id", "created_at"], name: "index_lessons_on_user_id_and_created_at"
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -58,11 +69,15 @@ ActiveRecord::Schema.define(version: 2020_10_20_122240) do
   create_table "words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "word"
     t.bigint "category_id"
+    t.bigint "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_words_on_category_id"
+    t.index ["lesson_id"], name: "index_words_on_lesson_id"
   end
 
   add_foreign_key "choices", "words"
+  add_foreign_key "lesson_words", "lessons"
   add_foreign_key "words", "categories"
+  add_foreign_key "words", "lessons"
 end

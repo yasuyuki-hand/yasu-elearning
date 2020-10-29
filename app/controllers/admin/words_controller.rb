@@ -30,9 +30,9 @@ class Admin::WordsController < ApplicationController
   def update
     @category = Category.find(params[:category_id])
     @word = Word.find(params[:id])
-    # 3.times {
-    #   @choices = Choice.find(params[:id])
-    # }
+    3.times {
+      @choices = Choice.find(params[:id])
+    }
     
     if @word.update_attributes(word_params)
       flash[:success] = "Word created!"
@@ -50,6 +50,7 @@ class Admin::WordsController < ApplicationController
       flash[:success] = "Word created!"
       redirect_to new_admin_category_word_url(@category)
     else 
+      abort
       flash[:danger] = "Something failed."
       redirect_to new_admin_category_word_url(@category)
     end
