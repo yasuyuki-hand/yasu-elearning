@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_28_092523) do
+ActiveRecord::Schema.define(version: 2020_10_30_003918) do
+
+  create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "word_id"
+    t.integer "choice_id"
+    t.integer "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["choice_id", "created_at"], name: "index_answers_on_choice_id_and_created_at"
+    t.index ["lesson_id", "created_at"], name: "index_answers_on_lesson_id_and_created_at"
+    t.index ["word_id", "created_at"], name: "index_answers_on_word_id_and_created_at"
+  end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"

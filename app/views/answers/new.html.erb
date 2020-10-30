@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="container container-small" "="">
+        <div class="row justify-content-center">
+            <div class="col-sm-8 col-center">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2></h2>
+                    </div>
+
+                    <!-- <div class="col-sm-6 text-right">
+                        aaaa
+                    </div> -->
+                </div>
+                <div class="page_info">
+                    
+                </div>
+                <div class="row">
+                    <div class="form-container">
+                        <div class="col-sm-10 col-center text-center">
+                    <%= page_entries_info @words %>
+                    
+                        <% @words.each do |word| %>
+                            <h2><%= word.word %></h2>
+                                <% word.choices.each do |choice| %>
+                                    <td><%= render 'form', word: word, choice: choice %></td>
+                                <% end %>
+                        <% end %>
+                        <%= will_paginate @words %>  
+                    
+                                <%# <form class="button_to" method="post" action="/lessons/328/lesson_words"><input class="btn btn-defalt" type="submit" value="gwq"><input type="hidden" name="authenticity_token" value="sK7eU/FmZ1/yYD+9oLtgFS02JCGvIu14SYcMJ1UOvX67Zrwdbw5N5SA0lkh2FOIz70sxNckGh6lOPd5FWxTLTA=="><input type="hidden" name="word_id" value="172"><input type="hidden" name="words_answer_id" value="450"></form>
+                                <form class="button_to" method="post" action="/lessons/328/lesson_words"><input class="btn btn-defalt" type="submit" value="agaweg"><input type="hidden" name="authenticity_token" value="sK7eU/FmZ1/yYD+9oLtgFS02JCGvIu14SYcMJ1UOvX67Zrwdbw5N5SA0lkh2FOIz70sxNckGh6lOPd5FWxTLTA=="><input type="hidden" name="word_id" value="172"><input type="hidden" name="words_answer_id" value="449"></form>
+                                <form class="button_to" method="post" action="/lessons/328/lesson_words"><input class="btn btn-defalt" type="submit" value="gregew"><input type="hidden" name="authenticity_token" value="sK7eU/FmZ1/yYD+9oLtgFS02JCGvIu14SYcMJ1UOvX67Zrwdbw5N5SA0lkh2FOIz70sxNckGh6lOPd5FWxTLTA=="><input type="hidden" name="word_id" value="172"><input type="hidden" name="words_answer_id" value="448"></form> %>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>      
+</div>

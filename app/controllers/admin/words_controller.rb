@@ -50,7 +50,6 @@ class Admin::WordsController < ApplicationController
       flash[:success] = "Word created!"
       redirect_to new_admin_category_word_url(@category)
     else 
-      abort
       flash[:danger] = "Something failed."
       redirect_to new_admin_category_word_url(@category)
     end

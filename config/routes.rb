@@ -46,6 +46,11 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :categories
 
+  resources :categories do
+    resources :lessons do
+      resources :answers
+    end
+  end
   resources :lessons do
        resources :words
   end
