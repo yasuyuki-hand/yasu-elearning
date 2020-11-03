@@ -17,6 +17,13 @@ class LessonsController < ApplicationController
     end
   end
 
+  def show
+    @lesson = Lesson.find(params[:id])
+    @answers = @lesson.answers
+    @category = Category.find(params[:category_id])
+    @words = @category.words
+  end
+  
   private
     def lesson_params
       params.require(:category_id).merge(user_id: current_user.id)
