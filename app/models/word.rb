@@ -7,6 +7,8 @@ class Word < ApplicationRecord
     accepts_nested_attributes_for :choices
     validate :unique
     validate :must_have_one_item
+    has_many :answers
+    # belongs_to :lesson
 
     def unique
         # 2つ以上同じchoiceにした場合にエラ
@@ -18,6 +20,11 @@ class Word < ApplicationRecord
             errors.add(:choices ,"Must have unique choice")
         end
 
+    end
+
+    
+    def correct_answer
+        choices.find_by(correct_ans: true).choices
     end
 
     private

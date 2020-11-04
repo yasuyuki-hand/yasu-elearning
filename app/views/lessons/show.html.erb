@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="container container-small">
-        <div class="row justify-content-center">
+    <div class="container container-small" "="">
+        <div class="row">
             <div class="col-sm-8 col-center">
                 <div class="row">
                     <div class="col-sm-6">
@@ -8,7 +8,8 @@
                     </div>
 
                     <div class="col-sm-6 text-right result">
-                        <strong> </strong>
+                        <strong>Result: of <%= @answers.count %></strong>
+                       
                     </div>
                 </div>
 
@@ -21,25 +22,26 @@
                                 <th>Correct Answer</th>
                                 <th></th>
                             </tr>
-                            <% @words.each do |word| %> 
+                            <% @answers.each do |answer| %>
                                 <tr>
-                                    <td><%= word.word %></td>
-                                    <td></td>
-                                    <% word.choices.each do |choice|%>
-                                        <% if choice.correct_ans == true %>
-                                        <td><%= choice.choices %></td>                           
-                                        <% end %>
-                                    <% end %>
+                                    <td><%= answer.word.word %></td>
+                                    <td><%= answer.choice.choices %></td>
+                                    <td><%= answer.word.correct_answer %></td>
+                                    <% if answer.choice.choices == answer.word.correct_answer %>
                                     <td>
-                                        <i class="far fa-check-circle"></i>
+                                        <i class="fas fa-check"></i>
                                     </td>
+                                    <% else %>
+                                    <td>
+                                        <i class="fas fa-times"></i>
+                                    </td>
+                                    <% end %>
                                 </tr>
-                            <% end %>
+                            <% end %>                 
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-</div>		
-
+</div>
