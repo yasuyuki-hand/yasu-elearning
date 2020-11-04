@@ -27,7 +27,8 @@ class AnswersController < ApplicationController
             result += 1
           end
           #You update the results here
-          @lesson.update_attributes(:result => result)
+          @lesson.update_attributes(:result => result, :is_completed => true)
+          
         end
         redirect_to category_lesson_url(@category, @lesson) #redirects if page=>""
       end

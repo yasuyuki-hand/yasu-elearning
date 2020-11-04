@@ -3,4 +3,5 @@ class CategoriesController < ApplicationController
     @lesson = Lesson.new
     @categories = Category.all
   end
+
 end

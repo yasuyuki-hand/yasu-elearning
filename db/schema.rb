@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_003918) do
     t.integer "category_id"
     t.integer "user_id"
     t.string "lesson"
+    t.boolean "is_completed", default: false
     t.integer "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

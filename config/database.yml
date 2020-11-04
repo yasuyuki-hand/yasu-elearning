@@ -52,3 +52,10 @@ production:
   database: yasu-elearning_production
   username: yasu-elearning
   password: <%= ENV['YASU-ELEARNING_DATABASE_PASSWORD'] %>
+  
+production:
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
