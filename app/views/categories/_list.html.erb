@@ -8,11 +8,12 @@
             <% if is_completed(category).nil? %>
                 <div class="text-right">
                     <%= render 'learn', category: category %>
-                </div>	
+                </div>
             <% else %>
-                <%= link_to "See Results", category_lesson_path(category, is_finished(category)) %>
-            <% end %>
-            	
+                <div class="text-right mb-3">
+                    <%= link_to "See Results", category_lesson_path(category, is_completed(category)) %>
+                </div>
+            <% end %>   		
         </section>
     </div>
 <% end %>

@@ -3,7 +3,6 @@ class CreateLessons < ActiveRecord::Migration[5.2]
     create_table :lessons do |t|
       t.integer :category_id, foreign_key: true
       t.integer :user_id, foreign_key: true
-      t.string :lesson
       t.boolean :is_completed, default: false
       t.integer :result
       t.timestamps
