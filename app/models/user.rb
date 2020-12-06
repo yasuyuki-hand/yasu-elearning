@@ -20,9 +20,26 @@ class User < ApplicationRecord
   has_secure_password # password and password confirmation is required
   validates :password, length: { minimum: 5 }
 
-  has_many :lessons
+  has_many :activities, dependent: :destroy
+  has_many :lessons, dependent: :destroy
+  has_many :answers, through: :lessons
 
   # has_many :categories
+
+   # Returns the hash digest of the given string.
+   def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  # Returns a user's status feed.
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+      WHERE  follower_id = :user_id"
+    Activity.where("user_id IN (#{following_ids})
+        OR user_id = :user_id", user_id: id)
+  end
 
   def following?(other_user)
     active_relationships.find_by(followed_id: other_user.id)

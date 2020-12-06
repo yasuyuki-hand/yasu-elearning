@@ -5,6 +5,7 @@ class CreateLessons < ActiveRecord::Migration[5.2]
       t.integer :user_id, foreign_key: true
       t.boolean :is_completed, default: false
       t.integer :result
+      t.integer :count
       t.timestamps
     end
     add_index :lessons, [:user_id, :created_at]

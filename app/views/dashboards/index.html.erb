@@ -1,0 +1,68 @@
+<div class="container">
+          <div class="container container-small" "="">
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span class="heading">User Information</span>
+				</div>
+
+				<div class="panel-body">
+					<div class="user_info text-center">
+						<div class="avatar">
+							<div class="row">
+    <div class="span">
+        <section>
+            <h1>
+                <%= gravatar_for @user %>
+                <%= @user.name %>
+            </h1>
+        </section>
+        <section>
+            <%= render 'shared/stats' %>
+        </section>
+    </div>
+</div>
+<%= render 'follow_form' if logged_in? %>
+
+						</div>
+						
+						<h3>Framig</h3>
+
+						<div class="text-gray mb-15" "="">
+							framgia@email.com
+						</div>
+
+						<a class="btn btn-xs btn-warning" href="/users/1/edit">Update profile</a>
+					</div>
+				</div>
+			</div>	
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span class="heading">User Stats</span>
+				</div>
+
+				<div class="panel-body">
+					<div class="learned_info text-center">
+						<div class="btn-group btn-group-justified">
+							<a href="/words">
+								<p><strong>Word learned 63</strong></p></a><p><a href="/words">
+</a>						</p></div>
+
+						<div class="btn-group btn-group-justified mt-20">
+							<div class="btn btn-default">
+								<a href="/users/1/followers">
+									<strong>7</strong> followers
+</a>							</div>
+							
+							<div class="btn btn-default">
+								<a href="/users/1/following">
+									<strong>5</strong> following
+</a>							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>

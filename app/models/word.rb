@@ -1,6 +1,6 @@
 class Word < ApplicationRecord
     belongs_to :category
-    validates :word, presence: true, length: { minimum: 2 }
+    validates :word, presence: true, length: { minimum: 2, maximum: 50 }
     # validates :choice, presence: true
     default_scope -> { order('created_at DESC') }
     has_many :choices, dependent: :destroy
