@@ -1,6 +1,7 @@
 <div class="row justify-content-center mt-3">
     <div class="col-md-9 col-center">
     <%= form_with model: [:admin, @category], local: true do |f| %>
+    <%= render 'shared/error_messages', object: @category %>
         <div class="form-group row">
             <div class="col-sm-2">
                 <%= f.label :title %>

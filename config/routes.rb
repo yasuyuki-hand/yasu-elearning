@@ -55,6 +55,8 @@ Rails.application.routes.draw do
        resources :words
   end
 
+  resources :dashboards
+  resources :words, only: [:index]
   #Create and destroy for Micropost
   #Create  -> Post button
   #Destroy -> Delete button to delete post

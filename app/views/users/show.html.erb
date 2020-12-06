@@ -1,15 +1,22 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-    <div class="span">
-        <section>
+    <aside class="col-md-3">
+        <section class="user_info">
             <h1>
                 <%= gravatar_for @user %>
                 <%= @user.name %>
             </h1>
         </section>
-        <section>
+        <section class="stats">
+            <div class="col-md-8">
+                <%= render 'follow_form' if logged_in? %>
+            </div>
+            <br>
             <%= render 'shared/stats' %>
         </section>
-    </div>
+        <section>
+           <%= total = @user.answers.count %> words learned
+        </section>
+    </aside>
+   
 </div>
-<%= render 'follow_form' if logged_in? %>

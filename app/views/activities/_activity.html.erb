@@ -1,0 +1,39 @@
+<li id="activity-<%= activity.id %>">
+    <%= link_to gravatar_for(activity.user, size: 50), activity.user %>
+    <span class="user">
+        <!-- Showing the name of users -->
+        <% if activity.action_type == "Lesson" %>
+            <% if activity.action.is_completed? %>
+                <% if activity.user.name == current_user.name %>
+                    <%= link_to "You", activity.user %>
+                <% else %>
+                    <%= link_to activity.user.name, activity.user %>
+                <% end %>
+            <% end %>
+        <% else %>
+            <% if activity.user.name == current_user.name %>
+                <%= link_to "You", activity.user %>
+            <% else %>
+                <%= link_to activity.user.name, activity.user %>
+            <% end %>
+        <% end %>
+
+        <!-- Showing action_type posts -->
+        <% if activity.action_type == "Lesson" %>
+            <% if activity.action.is_completed? %>
+                scored <%= activity.action.result %> out of <%= activity.action.words.count %>
+                in <span class="badge badge-light"><%= link_to activity.action.category.title, category_lesson_url(activity.action.category.id, activity.action.id) %></span>
+            <% end %>
+        <% else %>
+            followed
+            <% if activity.action.followed.name == current_user.name %>
+                <%= link_to "you", activity.action.followed %>
+            <% else %>
+                <%= link_to activity.action.followed.name, activity.action.followed %>
+            <% end %>
+        <% end %>
+    </span>
+        <span class="timestamp">
+        Posted <%= time_ago_in_words(activity.created_at) %> ago.
+    </span>
+</li>

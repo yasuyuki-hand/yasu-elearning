@@ -32,15 +32,32 @@ class UsersController < ApplicationController
   end
 
   def show
+    @lesson = Lesson.find(params[:id])
+    @answers = @lesson.answers
     @user = User.find(params[:id])
-
-    #show all microposts of this user
-    # @microposts = @user.microposts.paginate(page: params[:page], per_page: 10)
+    @activities = @user.activities.paginate(page: params[:page])
   end
   
   def destroy
     User.find(params[:id]).destroy
     redirect_to users_url
+  end
+
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.followed_users.paginate(page: params[:page], per_page: 10)
+    @all_users = @user.followed_users
+
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page], per_page: 10)
+    @all_users = @user.followers
+    render 'show_follow'
   end
 
 

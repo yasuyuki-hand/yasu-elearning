@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_30_003918) do
+ActiveRecord::Schema.define(version: 2020_12_05_093105) do
+
+  create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "action_type"
+    t.bigint "action_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["action_id", "action_type"], name: "index_activities_on_action_id_and_action_type"
+    t.index ["action_type", "action_id"], name: "index_activities_on_action_type_and_action_id"
+    t.index ["user_id", "created_at"], name: "index_activities_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_activities_on_user_id"
+  end
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "word_id"
@@ -52,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_003918) do
     t.integer "user_id"
     t.boolean "is_completed", default: false
     t.integer "result"
+    t.integer "count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id", "created_at"], name: "index_lessons_on_category_id_and_created_at"
@@ -88,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_003918) do
     t.index ["lesson_id"], name: "index_words_on_lesson_id"
   end
 
+  add_foreign_key "activities", "users"
   add_foreign_key "choices", "words"
   add_foreign_key "lesson_words", "lessons"
   add_foreign_key "words", "categories"
