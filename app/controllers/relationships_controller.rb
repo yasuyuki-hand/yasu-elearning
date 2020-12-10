@@ -1,6 +1,5 @@
 class RelationshipsController < ApplicationController
-  before_action :only_loggedin_users
-
+  before_action :logged_in_user
   def create
     @user = User.find(params[:followed_id])
     current_user.follow(@user)
@@ -18,5 +17,4 @@ class RelationshipsController < ApplicationController
       format.js
     end      
   end
-
 end

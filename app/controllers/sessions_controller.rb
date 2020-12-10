@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :check_signed_in, only: [:new]
+  before_action :check_admin_user, only: [:admin]
   def new
   end
 
@@ -9,6 +11,7 @@ class SessionsController < ApplicationController
       log_in user     #log_in -> user/session helper method
       redirect_to user 
     else
+      flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
     end
   end
@@ -16,6 +19,12 @@ class SessionsController < ApplicationController
   def destroy
     log_out
     redirect_to root_url
+  end
+
+  private
+
+  def check_signed_in
+    redirect_to(root_url) if logged_in?
   end
 
 end

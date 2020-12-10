@@ -1,4 +1,5 @@
 class LessonsController < ApplicationController
+  before_action :logged_in_user
   def new
     @category = Category.find(params[:category_id])
     @user = current_user

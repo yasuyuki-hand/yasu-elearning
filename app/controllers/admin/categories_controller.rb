@@ -45,8 +45,6 @@ class Admin::CategoriesController < ApplicationController
     @categories = Category.all
   end
 
-  
-
   private
   def category_params
     params.require(:category).permit(:title, :description)
@@ -55,5 +53,4 @@ class Admin::CategoriesController < ApplicationController
   def require_admin
     redirect_to root_url unless current_user.admin?
   end
-
 end

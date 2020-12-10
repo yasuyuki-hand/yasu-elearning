@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  before_action :check_admin_user
   def new
     @category = Category.find(params[:category_id])
     @word = @category.words.paginate(page: params[:page], per_page: 1)

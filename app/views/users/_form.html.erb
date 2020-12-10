@@ -1,4 +1,5 @@
 <%= form_for(@user) do |f| %>
+<%=render 'shared/error_messages', object: @user %>
     <%= f.label :image,"Picture", class: "text-dark mt-3" %>
     <%= f.file_field :image %>
     <%= f.hidden_field :image_cache %>
@@ -17,4 +18,12 @@
 
     <%= f.submit "Create my account", class: "btn btn-block btn-primary py-2 my-4" %>
 </div>
+<% if logged_in? %>
+        <% if current_user.admin %>
+            <div class="form-check form-group">
+                <%= f.check_box :admin, class: "form-check-input" %>
+                <%= f.label :admin, class: "form-check-label" %>
+            </div>
+        <% end %>
+    <% end %>
 <% end %>

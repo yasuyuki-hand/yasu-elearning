@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  before_action :only_loggedin_users, only: [:index, :edit, :update, :destroy, :following, :followers]
+  before_action :admin_user, only: [:destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update]
+  before_action :correct_user, only: [:edit, :update]
+  before_action :check_signed_in, only: [:new]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 10)
@@ -32,8 +35,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @lesson = Lesson.find(params[:id])
-    # @answers = @lesson.answers
     @user = User.find(params[:id])
     @activities = @user.activities.paginate(page: params[:page], per_page: 5)
   end
@@ -60,19 +61,27 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def check_signed_in
+    redirect_to(root_url) if logged_in?
+  end
+
 
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :image )
   end
 
-  def only_loggedin_users
-    redirect_to login_url unless logged_in?
-  end
-
+  # Confirms the correct user.
   def correct_user
     @user = User.find(params[:id])
-    redirect_to root_url unless current_user?(@user)
+    redirect_to(root_url) unless current_user?(@user) || current_user.admin
   end
-  
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin 
+  end
+
+  def check_admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 end

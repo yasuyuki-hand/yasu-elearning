@@ -1,55 +1,82 @@
 <% provide(:title, "Words learned") %>
-<div class="row">
-    <aside class="col-md-4">
-        <section class="user_info">
-            <%= render 'shared/user_info' %>
-        </section><!-- end of user_info -->
-        <section class="stats">
-            <%= render 'shared/stats' %>
-        </section>
-    </aside>
-        <div class="col-md-8">
-            <ol class="activities">
-                <div class="container mt-4">
-                    <div class="row justify-content-center">
-                        <div class="card shadow col-md-12">
-                            <div class="card-body">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Words</th>
-                                            <th>Your answers</th>
-                                            <th rowspan="2">Correct answer</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                            <% if @user.lessons.any? %>
-                                                <% @user.lessons.each do |lesson| %>
-                                                    <% lesson.answers.each do |answer| %>
-                                                    <tr>
-                                                        <th> <%= answer.word.word %> </th>
-                                                        <th> <%= answer.choice.choices %> </th>
-                                                        <th> <%= answer.word.correct_answer %> </th>
-                                                        <% if answer.choice.choices == answer.word.correct_answer %>
-                                                            <th><h3 class="text-success">✓</h3></th>
-                                                        <% else %>
-                                                            <th><h3 class="text-danger">✕</h3></th>
-                                                        <% end %>
-                                                    </tr>
-                                                    <% end %>
-                                                <% end %>
-                                            <% else %>
-                                                <td colspan="4">
-                                                    <h3 class="center">No record.</h3>
-                                                </td>
-                                            <% end %>
-                                        
-                                    </tbody>
-                                </table>
+<div class="top-image2" id="contents">
+    <div class="container mt-5">
+        <h1 class="text-white">User Profile</h1>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="container">
+                    <div class="card mb-2">
+                        <div class="card-body">
+                        <div class="text-center">
+                                    <div class="avatar_picture center">
+                                    <% if current_user.image? %>
+                                        <%= image_tag current_user.image.url, class: "icon" %> 
+                                    <% else %>
+                                        <img src="/assets/default.png" class="icon" alt="ユーザーアイコン">
+                                    <% end %>
+                                        <%#= gravatar_for @user, class: "text-center" %>
+                                    </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <h2><%= current_user.name %></h2>
+                            </div>
+                            <div id="follow_form ">
+                                <%#= render 'follow_form' if logged_in? %>
+                            </div>
+                            <div class="text-center">
+                                <%= render 'shared/stats' %>
+                            </div>
+                            <div class="text-center mt-3">
+                                <%= total = @user.answers.count %> words learned
                             </div>
                         </div>
                     </div>
                 </div>
-            </ol>
+            </div>
+            <div class="col-md-8">
+                <ol class="activities">
+                    <div class="container mt-4">
+                        <div class="row justify-content-center">
+                            <div class="card shadow col-md-12">
+                                <div class="card-body">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Words</th>
+                                                <th>Your answers</th>
+                                                <th rowspan="2">Correct answer</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <% if @user.lessons.any? %>
+                                                    <% @user.lessons.each do |lesson| %>
+                                                        <% lesson.answers.each do |answer| %>
+                                                        <tr>
+                                                            <th> <%= answer.word.word %> </th>
+                                                            <th> <%= answer.choice.choices %> </th>
+                                                            <th> <%= answer.word.correct_answer %> </th>
+                                                            <% if answer.choice.choices == answer.word.correct_answer %>
+                                                                <th><h3 class="text-success">✓</h3></th>
+                                                            <% else %>
+                                                                <th><h3 class="text-danger">✕</h3></th>
+                                                            <% end %>
+                                                        </tr>
+                                                        <% end %>
+                                                    <% end %>
+                                                <% else %>
+                                                    <td colspan="4">
+                                                        <h3 class="center">No record.</h3>
+                                                    </td>
+                                                <% end %>  
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ol>
+            </div>
         </div>
+    </div>
 </div>

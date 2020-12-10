@@ -1,34 +1,19 @@
 class WordsController < ApplicationController
   before_action :logged_in_user
   def index
-    # @category = Category.find(params[:category_id])
-    # @words = @category.words.all
-    # @words = Word.all
   end
 
   def show
   end
 
   def new
-    # We will select a category
-    # @category = Category.find(params[:category_id])
-    # # Inside category, we will make a word
-    # @word = @category.words.build
-    # # Inside word, we will create 3 choices
-    # 3.times {
-    #   @word.choices.build
-    # }
     @category = Category.find(params[:category_id])
     @words = @category.words.all
-    # @words = Word.all
   end
 
   def edit
     @category = Category.find(params[:category_id])
     @word = Word.find(params[:id])
-    # 3.times {
-    #   Choice.find(params[:id])
-    # }
   end
 
   def update
@@ -60,7 +45,6 @@ class WordsController < ApplicationController
   end
 
   def destroy
-    #@category = Category.find(params[:category_id])
     Word.find(params[:id]).destroy
     redirect_to admin_category_words_url, notice: "Successfully all delete!"
   end

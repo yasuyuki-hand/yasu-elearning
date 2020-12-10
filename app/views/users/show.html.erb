@@ -6,19 +6,17 @@
             <div class="col-lg-4">
                 <div class="container">
                     <div class="card mb-2">
-                    
                         <div class="card-body">
-                        <div class="text-center">
-                                    <div class="avatar_picture center">
-                                    <% if @user.image? %>
-                                        <%= image_tag @user.image.url, class: "icon" %> 
-                                    <% else %>
-                                        <img src="/assets/default.png" class="icon" alt="ユーザーアイコン">
-                                    <% end %>
-                                        <%#= gravatar_for @user, class: "text-center" %>
-                                    </div>
+                            <div class="text-center">
+                                <div class="avatar_picture center">
+                                <% if @user.image? %>
+                                    <%= image_tag @user.image.url, class: "icon" %> 
+                                <% else %>
+                                    <img src="/assets/default.png" class="icon" alt="ユーザーアイコン">
+                                <% end %>
+                                    <%#= gravatar_for @user, class: "text-center" %>
+                                </div>
                             </div>
-                            
                             <div class="text-center">
                                 <h2><%= @user.name %></h2>
                             </div>
@@ -75,7 +73,7 @@
                     </div>
                 </div>
             </div>
-    <% end %>
+        <% end %>
         </div>
     </div>
 </div>
