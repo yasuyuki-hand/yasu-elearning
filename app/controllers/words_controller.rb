@@ -3,7 +3,7 @@ class WordsController < ApplicationController
   def index
     # @category = Category.find(params[:category_id])
     # @words = @category.words.all
-    # # @words = Word.all
+    # @words = Word.all
   end
 
   def show

@@ -1,5 +1,10 @@
-<li class="col-12 my-4">
-    <%= link_to gravatar_for(user), user %>
+<li class="col-12">
+    <% if user.image? %>
+        <%= link_to user.image.url, class: "icon2" %>
+    <% else %>
+        <img src="/assets/default.png" class="icon2" alt="ユーザーアイコン">
+    <% end %>
+    <%#= link_to gravatar_for(user), user %>
     <span class="user">
         <%= link_to user.name, user %>
         <%= link_to "| delete", user_path(user), method: :delete,

@@ -1,47 +1,49 @@
-<nav class="navbar navbar-expand-lg navbar-white bg-info py-4">
-<%# <a class="navbar-brand" href="#">Navbar</a> %>
-    <div class="container">
-        <%= link_to "E-learning", root_path, class: "navbar-brand text-white" %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <% if logged_in? %>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <%= link_to "Yasu-Learning", root_path, class: "navbar-brand text-white" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <% if logged_in? %>
+            <li class="nav-item active">
+                <%= link_to "Home", root_path, class: "nav-link text-white" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "About", about_path, class: "nav-link text-white" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Category", categories_path, class: "nav-link text-white"%>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Members", users_path, class: "nav-link text-white"%>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><%= current_user.name %></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a><%= link_to "Profile", current_user, class: "dropdown-item text-dark"  %></a>
+                    <a class="dropdown-item" href="<%= edit_user_path(current_user) %>">Setting</a>
+                    <a class="dropdown-item" rel="nofollow" data-method="delete" href="<%= logout_path %>">Logout</a>
+                    <div class="dropdown-divider"></div>
                     <% if current_user.admin? %>
-                        <li class="nav-item">
-                            <%= link_to "Manage Categories", admin_categories_path, class: "nav-link text-white"%>
-                        </li>
+                         <a class="dropdown-item" href="<%= admin_categories_path %>">Manage Categories</a>
                     <% end %>
-                    <li class="nav-item">
-                        <%= link_to "Category", categories_path, class: "nav-link text-white"%>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to "Members", users_path, class: "nav-link text-white"%>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to "Profile", current_user, class: "nav-link text-white"%>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to "Setting", edit_user_path(current_user), class: "nav-link text-white" %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to "Logout", logout_path, method: :delete, class: "nav-link text-white" %>
-                    </li>
-                <% else %>
-                    <li class="nav-item active">
-                        <%# <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> %>
-                        <%= link_to "Home", root_path, class: "nav-link text-white" %>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <%= link_to "Sign Up", signup_path, class: "nav-link text-white" %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to "Login", login_path, class: "nav-link text-white" %>
-                    </li>
-                <% end %>
-            </ul>
-        </div>
-    </div>
+                </div>
+            </li>
+        <% else %>
+            <li class="nav-item active">
+                <%= link_to "Home", root_path, class: "nav-link text-white" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "About", about_path, class: "nav-link text-white" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Sign Up", signup_path, class: "nav-link text-white" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Login", login_path, class: "nav-link text-white" %>
+            </li>
+        <% end %>
+    </ul>
+  </div>
 </nav>

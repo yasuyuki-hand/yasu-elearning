@@ -5,19 +5,26 @@
 <span>
     <%= link_to "view my profile", current_user, class: "text-center" %>
 </span>
-
 <% @user ||= current_user %>
-<div class="stats">
-    <a href="<%= following_user_path(@user) %>">
-        <strong id="following" class="stat">
-            <%= @user.followed_users.count %>
-        </strong>
-        following
-    </a>
-    <a href="<%= followers_user_path(@user) %>">
-        <strong id="followers" class="stat">
-            <%= @user.followers.count %>
-        </strong>
-        followers
-    </a>
-</div>
+<div class="row">
+    <div class="col-lg-6">
+        <h5>Following</h5>
+        <h3><span class="badge badge-primary" id="following">
+            <a href="<%= following_user_path(@user) %>">
+                <strong id="following" class="stat text-white">
+                    <%= @user.followed_users.count %>
+                </strong>
+            </a>
+        </span></h3>
+    </div>
+    <div class="col-lg-6">
+        <h5>Followers</h5>
+        <h3><span class="badge badge-primary" id="followers">
+            <a href="<%= followers_user_path(@user) %>">
+                <strong id="followers" class="stat text-white">
+                    <%= @user.followers.count %>
+                </strong>
+            </a>
+        </span></h3>
+    </div>
+</div>	

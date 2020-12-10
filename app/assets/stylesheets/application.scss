@@ -31,6 +31,75 @@ body {
   color: white;
 }
 
+.navbar {
+  background-color: #500E17;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.top-image {
+  background-image: url('1.jpg');
+  height: 800px;
+  background-size:cover;
+}
+
+.top-image1 {
+  background-image: url('2.jpg');
+  height: 800px;
+  background-size:cover;
+}
+
+.top-image2 {
+  background-image: url('3.jpg');
+  height: 800px;
+  background-size:cover;
+  z-index:0;
+  overflow: hidden;
+}
+
+.top-image3 {
+  background-image: url('4.jpg');
+  height: 800px;
+  background-size:cover;
+}
+
+.top-text {
+  color: white;
+  font-size: 100px;
+}
+
+h1 {
+  font-family: 'Covered By Your Grace', cursive;
+  color: #500E17;
+}
+
+.top-text-area {
+  padding-top: 50px;
+  margin-left: 50px;
+}
+
+.jumbotron {
+  background: rgba(116, 116, 116, 0.5);
+  color: white;
+}
+
+.signature {
+  font-family: 'Covered By Your Grace', cursive;
+  color: #500E17;
+}
+
+.category-table {
+  background-color: #eeeeee;
+  border: 1px solid #dee2e6;
+}
+
 .main {
   // background-image: url(/assets/view.jpg);
   // background-size: 100%;
@@ -111,23 +180,17 @@ section {
   border-top-left-radius: 3px;
 }
 
-// .form-control {
-//   display: block;
-//   width: 100%;
-//   height: 34px;
-//   padding: 6px 12px;
-//   font-size: 14px;
-//   line-height: 1.428571429;
-//   color: #555555;
-//   background-color: #fff;
-//   background-image: none;
-//   border: 1px solid #ccc;
-//   border-radius: 4px;
-//   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-//   box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-//   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-//   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-//   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-// }
+.icon {
+  width: 80%;
+  height: auto;
+}
 
+.icon1 {
+  width: 15%;
+  height: auto;
+}
 
+.icon2 {
+  width: 10%;
+  height: auto;
+}

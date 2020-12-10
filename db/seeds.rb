@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name: "Michael Reeves",
-  email: "michael@email.com",
+User.create!(name: "Daniel James",
+  email: "test@email.com",
   password: "password",
   password_confirmation: "password",
   admin: true)
@@ -34,8 +34,20 @@ end
   followers.each { |follower| follower.follow(user) }
 
 
-#Word.create!(word: "subject",
-  #answer: "math")
+  title = "TOEIC Words"
+  description = "Academic name"
+  word = "What is the study of computers?"
+  category = Category.create!(title: title, description: description)
+
+  words = Word.create!(
+      word: word,
+      category_id: category.id,
+      choices_attributes:[
+        { choices: "sociology", correct_ans: false},
+        { choices: "mathmatice", correct_ans: false},
+        { choices: "computer science", correct_ans: true}
+      ]
+  )
   
 
 

@@ -1,5 +1,10 @@
-<li id="activity-<%= activity.id %>">
-    <%= link_to gravatar_for(activity.user, size: 50), activity.user %>
+<li id="activity-<%= activity.id %>" class="p-3">
+    <% if activity.user.image? %>
+        <%= image_tag @user.image.url, class: "icon2" %> 
+    <% else %>
+        <img src="/assets/default.png" class="icon2" alt="ユーザーアイコン">
+    <% end %>
+    <%#= link_to gravatar_for(activity.user, size: 50), activity.user %>
     <span class="user">
         <!-- Showing the name of users -->
         <% if activity.action_type == "Lesson" %>

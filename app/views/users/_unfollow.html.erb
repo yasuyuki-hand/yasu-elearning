@@ -2,5 +2,5 @@
                                 html: {method: :delete },
                                 remote: true) do |f| %>
     <%= hidden_field_tag :follow_id, @user.id %>
-    <%= f.submit "Unfollow", class: "btn btn-large btn-secondary ml-5" %>
+    <div class="text-center"><%= f.submit "Unfollow", class: "btn btn-large btn-danger px-5" %></div>
 <% end %>

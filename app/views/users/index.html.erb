@@ -1,38 +1,43 @@
 <% provide(:title, "Members") %>
-
-<div class="container">
-    <div class="row mt-5">
-	    <div class="col-sm-6">
-		    <h3>All Users</h3>
-	    </div>
-        <div class="col-sm-6 text-right">
-            <%= will_paginate%>
-        </div>
-    </div>
-    
-    <div class="row object-list mt-5">
-        <% @users.each do |user| %>
-        <div class="col-sm-6">
-            <section>
-			    <div class="detail">
-				    <div class="media">
-					    <div class="media-left">
-						    <%= gravatar_for user, size: 52 %>
-					    </div>
-                        <div class="media-body media-middle">
-						    <div class="media-heading">
-							    <%= link_to user.name, user %>
-							    <%= link_to "| delete", user_path(user), method: :delete,
-                                      data: { confirm: "You sure?" } %>      
-						    </div>
-					    </div>
-				    </div>
-			    </div>
-	        </section>
-        </div>
-        <% end %>
-    </div>   
+<div class="top-image2" id="contents">
+	<div class="container">
+		<div class="row mt-5">
+			<div class="col-sm-6">
+				<h1 class="text-white">All Users</h1>
+			</div>
+			<div class="col-sm-6 text-right">
+				<%= will_paginate%>
+			</div>
+		</div>
+		
+		<div class="row object-list mt-5">
+			<% @users.each do |user| %>
+			<div class="col-sm-6">
+				<section>
+					<div class="detail">
+						<div class="media">
+							<div class="media-left">
+								<% if user.image? %>
+									<%= image_tag user.image.url, class: "icon1" %> 
+								<% else %>
+									<img src="/assets/default.png" class="icon1" alt="ユーザーアイコン">
+								<% end %>
+								<%#= gravatar_for user, size: 52 %>
+							</div>
+							<div class="media-body media-middle">
+								<div class="media-heading">
+									<%= link_to user.name, user %>
+									<%= link_to "| delete", user_path(user), method: :delete,
+										data: { confirm: "You sure?" } %>      
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<% end %>
+		</div>   
+	</div>
 </div>
-
 
 

@@ -1,26 +1,57 @@
 <% provide(:title, @title) %>
-<div class="mt-4">
-    <div class="row">
-        <aside class="col-md-4">
-            <section class="user_info">
-                <%= gravatar_for @user %>
-                <h1><%= @user.name %></h1>
-                <span><%= link_to "view my profile", @user %></span>
-            </section>
-            <section class="stats">
-                <%= render 'shared/stats' %>
-            </section>
-        </aside>
-        <div class="col-md-8">
-            <h3><%= @title %></h3>
-            <% if @users.any? %>
-                <% @users.each do |user| %>
-                    <ul class="users follow">
-                        <%=render user%>
-                    </ul>
+<div class="top-image2" id="contents">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-4">
+            <h1 class="text-white">User Profile</h1>
+                <div class="container">
+                    <div class="card mb-2">
+                    
+                        <div class="card-body">
+                        <div class="text-center">
+                                    <div class="avatar_picture center">
+                                    <% if @user.image? %>
+                                        <%= image_tag @user.image.url, class: "icon" %> 
+                                    <% else %>
+                                        <img src="/assets/default.png" class="icon" alt="ユーザーアイコン">
+                                    <% end %>
+                                        <%#= gravatar_for @user, class: "text-center" %>
+                                    </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <h2><%= @user.name %></h2>
+                            </div>
+                            <div class="text-center">
+                                <%= link_to "view my profile", current_user, class: "text-center" %>
+                            </div>
+                            <div id="follow_form ">
+                                <%= render 'follow_form' if logged_in? %>
+                            </div>
+                            <div class="text-center">
+                                <%= render 'shared/stats' %>
+                            </div>
+                            <div class="text-center mt-3">
+                            <%#= link_to "#{current_user.answers.count} words learned", words_path, class: "btn btn-lg btn-warning" %>
+                                <%= total = @user.answers.count %> words learned
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+            <h1 class="text-white"><%= @title %></h1>
+                <div class="panel-heading">
+                <% if @users.any? %>
+                    <% @users.each do |user| %>
+                        <ul class="users follow my-3">
+                            <%=render user%>
+                        </ul>
+                    <% end %>
+                    <%= will_paginate %>
                 <% end %>
-                <%= will_paginate %>
-            <% end %>
+            </div>
+            </div>
         </div>
     </div>
 </div>

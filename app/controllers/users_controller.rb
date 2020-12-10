@@ -32,10 +32,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @lesson = Lesson.find(params[:id])
-    @answers = @lesson.answers
+    # @lesson = Lesson.find(params[:id])
+    # @answers = @lesson.answers
     @user = User.find(params[:id])
-    @activities = @user.activities.paginate(page: params[:page])
+    @activities = @user.activities.paginate(page: params[:page], per_page: 5)
   end
   
   def destroy
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   def following
     @title = "Following"
     @user = User.find(params[:id])
-    @users = @user.followed_users.paginate(page: params[:page], per_page: 10)
+    @users = @user.followed_users.paginate(page: params[:page], per_page: 5)
     @all_users = @user.followed_users
 
     render 'show_follow'
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   def followers
     @title = "Followers"
     @user = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page], per_page: 10)
+    @users = @user.followers.paginate(page: params[:page], per_page: 5)
     @all_users = @user.followers
     render 'show_follow'
   end
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image )
   end
 
   def only_loggedin_users

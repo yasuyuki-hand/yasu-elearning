@@ -1,46 +1,50 @@
-<div class="container">
-    <div class="container container-small" "="">
-        <div class="row">
-            <div class="col-sm-8 col-center">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h1></h1>
+<div class="top-image3" id="contents">
+    <div class="container table pt-5">
+        <div class="container container-small" "="">
+            <div class="row">
+                <div class="col-sm-12 col-center">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h1></h1>
+                        </div>
+
+                        <div class="col-sm-6 text-right result">
+                            <h1 class="text-white">Result: <%= show_result(@category) %> of <%= @answers.count %></h1>
+                        </div>
                     </div>
 
-                    <div class="col-sm-6 text-right result">
-                        <strong>Result: <%= show_result(@category) %> of <%= @answers.count %></strong>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <table class="table result">
-                        <tbody>
-                            <tr>
-                                <th>Word</th>
-                                <th>Your Answer</th>
-                                <th>Correct Answer</th>
-                                <th></th>
-                            </tr>
-                            <% @answers.each do |answer| %>
+                    <div class="row">
+                        <table class="table table category-table result ">
+                            <tbody>
                                 <tr>
-                                    <td><%= answer.word.word %></td>
-                                    <td><%= answer.choice.choices %></td>
-                                    <td><%= answer.word.correct_answer %></td>
-                                    <% if answer.choice.choices == answer.word.correct_answer %>
-                                    <td>
-                                        <i class="fas fa-check"></i>
-                                    </td>
-                                    <% else %>
-                                    <td>
-                                        <i class="fas fa-times"></i>
-                                    </td>
-                                    <% end %>
+                                    <th class="text-center p-4">Word</th>
+                                    <th class="text-center p-4">Your Answer</th>
+                                    <th class="text-center p-4">Correct Answer</th>
+                                    <th class="text-center p-4"></th>
                                 </tr>
-                            <% end %>                 
-                        </tbody>
-                    </table>
+                                <% @answers.each do |answer| %>
+                                    <tr>
+                                        <td class="text-center p-3"><%= answer.word.word %></td>
+                                        <td class="text-center p-3"><%= answer.choice.choices %></td>
+                                        <td class="text-center p-3"><%= answer.word.correct_answer %></td>
+                                        <% if answer.choice.choices == answer.word.correct_answer %>
+                                        <td class="text-center p-3">
+                                            <i class="fas fa-check"></i>
+                                        </td>
+                                        <% else %>
+                                        <td class="text-center p-3">
+                                            <i class="fas fa-times"></i>
+                                        </td>
+                                        <% end %>
+                                    </tr>
+                                <% end %>                 
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+

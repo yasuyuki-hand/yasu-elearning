@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   #   get 'words/new'
   #   get 'words/edit'
   # end
+  post '/guest', to: 'guest_sessions#create'
   namespace :admin do
     resources :categories do
       resources :words do
@@ -44,13 +45,14 @@ Rails.application.routes.draw do
 
   #New create and destroy for sessions
   resources :sessions, only: [:new, :create, :destroy]
-  resources :categories
+  resources :categories 
 
   resources :categories do
     resources :lessons do
       resources :answers
     end
   end
+
   resources :lessons do
        resources :words
   end
