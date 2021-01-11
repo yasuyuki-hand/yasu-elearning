@@ -16,6 +16,7 @@ default: &default
   username: root
   password: password
   host: db   #変更(docker-compose.ymlのservice名を記載)
+  # socket: /tmp/mysql.sock
   
 development:
   <<: *default
@@ -47,11 +48,22 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# production:
+#   <<: *default
+#   database: yasu-elearning_production
+#   username: yasu-elearning
+#   password: <%= ENV['YASU-ELEARNING_DATABASE_PASSWORD'] %>
+
 production:
   <<: *default
-  database: yasu-elearning_production
-  username: yasu-elearning
-  password: <%= ENV['YASU-ELEARNING_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DB_DATABASE'] %>
+  adapter: mysql2
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_general_ci
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   
 production:
   <<: *default
