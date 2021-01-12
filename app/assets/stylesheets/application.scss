@@ -25,7 +25,7 @@ body {
 }
 
 .form-view {
-  background-image: url(/assets/form.jpg);
+  background-image: image-url(/assets/form.jpg);
   background-size: 100%;
   background-position: center;
   color: white;
@@ -45,19 +45,19 @@ body {
 }
 
 .top-image {
-  background-image: url('1.jpg');
+  background-image: image-url('1.jpg');
   height: 800px;
   background-size:cover;
 }
 
 .top-image1 {
-  background-image: url('2.jpg');
+  background-image: image-url('2.jpg');
   height: 800px;
   background-size:cover;
 }
 
 .top-image2 {
-  background-image: url('3.jpg');
+  background-image: image-url('3.jpg');
   height: 800px;
   background-size:cover;
   z-index:0;
@@ -65,7 +65,7 @@ body {
 }
 
 .top-image3 {
-  background-image: url('4.jpg');
+  background-image: image-url('4.jpg');
   height: 800px;
   background-size:cover;
 }
